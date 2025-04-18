@@ -18,121 +18,82 @@ export default function Home() {
   useEffect(() => {
   const style = document.createElement('style');
   style.innerHTML = `
-    :root {
-      --bg: #f9f9f9;
-      --text: #1a1a1a;
-      --box: #ffffff;
-      --border: #e0e0e0;
-      --primary: #0057d9;
-      --primary-hover: #0041a8;
-    }
+  body {
+    background-color: #f9f9f9 !important;
+    font-family: ${inter.className}, sans-serif;
+    color: #1a1a1a !important;
+  }
 
-    [data-theme="dark"] {
-      --bg: #1e1e1e;
-      --text: #f0f0f0;
-      --box: #2a2a2a;
-      --border: #444;
-      --primary: #3399ff;
-      --primary-hover: #227acc;
-    }
+  .swagger-ui .topbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-    body {
-      background-color: var(--bg) !important;
-      color: var(--text) !important;
-      font-family: ${inter.className}, sans-serif;
-      transition: background 0.3s, color 0.3s;
-    }
+  .swagger-ui .info .title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #222 !important;
+    text-transform: uppercase;
+  }
 
-    .swagger-ui .topbar {
-      background-color: var(--box) !important;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-      transition: background 0.3s, border 0.3s;
-    }
+  .swagger-ui .opblock {
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
 
-    .swagger-ui .info .title {
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--text) !important;
-      text-transform: uppercase;
-    }
+  .swagger-ui .opblock-summary {
+    background: #ffffff !important;
+    color: #333 !important;
+  }
 
-    .swagger-ui .opblock {
-      border-radius: 12px;
-      margin-bottom: 15px;
-      border: 1px solid var(--border);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      background: var(--box) !important;
-      transition: background 0.3s;
-    }
+  .swagger-ui .opblock .opblock-section-header {
+    background: #fafafa;
+    font-weight: 500;
+  }
 
-    .swagger-ui .opblock-summary,
-    .swagger-ui .opblock .opblock-section-header {
-      background: var(--box) !important;
-      color: var(--text) !important;
-    }
+  .swagger-ui .btn {
+    border-radius: 6px !important;
+    background-color: #0057d9 !important;
+    color: #fff !important;
+    border: none !important;
+  }
 
-    .swagger-ui .btn {
-      border-radius: 6px !important;
-      background-color: var(--primary) !important;
-      color: #fff !important;
-      border: none !important;
-      transition: background 0.3s;
-    }
+  .swagger-ui .btn:hover {
+    background-color: #0041a8 !important;
+  }
 
-    .swagger-ui .btn:hover {
-      background-color: var(--primary-hover) !important;
-    }
+  .swagger-ui input,
+  .swagger-ui textarea,
+  .swagger-ui select {
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    padding: 8px !important;
+    background-color: #fff !important;
+  }
 
-    .swagger-ui input,
-    .swagger-ui textarea,
-    .swagger-ui select {
-      border-radius: 6px !important;
-      border: 1px solid var(--border) !important;
-      padding: 8px !important;
-      background-color: var(--box) !important;
-      color: var(--text) !important;
-    }
+  .swagger-ui .model-title {
+    font-weight: 600;
+    color: #444 !important;
+  }
 
-    .swagger-ui .model-title {
-      font-weight: 600;
-      color: var(--text) !important;
-    }
+  .swagger-ui .response-col_status {
+    font-weight: bold;
+    color: #2a7c2a !important;
+  }
 
-    .swagger-ui .response-col_status {
-      font-weight: bold;
-      color: #2a7c2a !important;
-    }
-
-    footer {
-      background-color: var(--box);
-      padding: 20px;
-      text-align: center;
-      color: var(--text);
-      font-size: 14px;
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
-    }
-
-    #theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-
-    #theme-toggle:hover {
-      background: var(--primary-hover);
-    }
-  `;
+  footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+  }
+`;
   document.head.appendChild(style);
 
   const theme = localStorage.getItem('theme') || 'light';
