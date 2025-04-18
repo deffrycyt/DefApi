@@ -1,5 +1,5 @@
-export const API_KEY = ['free'];
-export const CREATOR = '@Nevaria Api'
+export const API_KEY = ['noxx'];
+export const CREATOR = 'deffriGans'
 
 export const mess = {
   inapikey: "invalid apiKey",
@@ -9,6 +9,6 @@ export const mess = {
 };
 
 export const footer = {
-  name: "VynnoxRzy",
-  url: "https://github.com/LEXXYVDEV"
+  name: "NoxxUs",
+  url: "https://github.com/deffricyt"
 };
