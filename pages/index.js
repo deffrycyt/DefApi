@@ -16,146 +16,184 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = `
-      body,
-      .swagger-ui .info .title,
-      .swagger-ui .scheme-container,
-      .swagger-ui select,
-      .swagger-ui textarea,
-      .swagger-ui input[type="text"],
-      .swagger-ui input[type="email"],
-      .swagger-ui input[type="file"],
-      .swagger-ui input[type="password"],
-      .swagger-ui input[type="search"],
-      .swagger-ui .topbar,
-      .swagger-ui .dialog-ux .modal-ux {
-        background-color: #f2f2f2 !important;
-      }
+  const style = document.createElement('style');
+  style.innerHTML = `
+    :root {
+      --bg: #f9f9f9;
+      --text: #1a1a1a;
+      --box: #ffffff;
+      --border: #e0e0e0;
+      --primary: #0057d9;
+      --primary-hover: #0041a8;
+    }
 
-      .swagger-ui .opblock .opblock-section-header,
-      .swagger-ui input[type="email"].invalid,
-      .swagger-ui input[type="file"].invalid,
-      .swagger-ui input[type="password"].invalid,
-      .swagger-ui input[type="search"].invalid,
-      .swagger-ui input[type="text"].invalid,
-      .swagger-ui textarea.invalid {
-        background-color: transparent;
-      }
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #f0f0f0;
+      --box: #2a2a2a;
+      --border: #444;
+      --primary: #3399ff;
+      --primary-hover: #227acc;
+    }
 
-      .swagger-ui .opblock .opblock-section-header,
-      .swagger-ui table thead tr td,
-      .swagger-ui table thead tr th,
-      .swagger-ui .opblock-tag,
-      .swagger-ui .dialog-ux .modal-ux,
-      .swagger-ui section.models .model-container,
-      .swagger-ui section.models.is-open h4,
-      .swagger-ui section.models,
-      .swagger-ui .dialog-ux .modal-ux-header,
-      .swagger-ui .auth-container {
-        border-color: #bfbfbf;
-      }
+    body {
+      background-color: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: ${inter.className}, sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
 
-      .swagger-ui .opblock:hover {
-        border-color: #a6a6a6;
-      }
-      
-      .swagger-ui,
-      .swagger-ui .info .title,
-      .swagger-ui .scheme-container,
-      .swagger-ui .model-title,
-      .swagger-ui .opblock-summary-method,
-      .swagger-ui .opblock-summary-path,
-      .swagger-ui .response-col_status,
-      .swagger-ui label,
-      .swagger-ui .opblock-tag {
-        color: #333333 !important;
-      }
+    .swagger-ui .topbar {
+      background-color: var(--box) !important;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+      transition: background 0.3s, border 0.3s;
+    }
 
-      footer {
-        background-color: #d9d9d9;
-        padding: 20px;
-        text-align: center;
-        color: #333333;
-        font-family: ${inter.className};
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-      }
+    .swagger-ui .info .title {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text) !important;
+      text-transform: uppercase;
+    }
 
-      .swagger-ui .info .title {
-        font-size: 32px;
-        font-weight: bold;
-        display: inline-block;
-      }
+    .swagger-ui .opblock {
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      background: var(--box) !important;
+      transition: background 0.3s;
+    }
 
-      .swagger-ui .info .title::before {
-        content: "";
-        background: linear-gradient(90deg, red, purple, blue);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientMove 7s infinite linear;
-        background-size: 200% 200%;
-      }
+    .swagger-ui .opblock-summary,
+    .swagger-ui .opblock .opblock-section-header {
+      background: var(--box) !important;
+      color: var(--text) !important;
+    }
 
-      @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
+    .swagger-ui .btn {
+      border-radius: 6px !important;
+      background-color: var(--primary) !important;
+      color: #fff !important;
+      border: none !important;
+      transition: background 0.3s;
+    }
 
-      .swagger-ui .info .title span {
-        color: #333333 !important;
-      }
-    `;
-    document.head.appendChild(style);
+    .swagger-ui .btn:hover {
+      background-color: var(--primary-hover) !important;
+    }
 
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
+    .swagger-ui input,
+    .swagger-ui textarea,
+    .swagger-ui select {
+      border-radius: 6px !important;
+      border: 1px solid var(--border) !important;
+      padding: 8px !important;
+      background-color: var(--box) !important;
+      color: var(--text) !important;
+    }
+
+    .swagger-ui .model-title {
+      font-weight: 600;
+      color: var(--text) !important;
+    }
+
+    .swagger-ui .response-col_status {
+      font-weight: bold;
+      color: #2a7c2a !important;
+    }
+
+    footer {
+      background-color: var(--box);
+      padding: 20px;
+      text-align: center;
+      color: var(--text);
+      font-size: 14px;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    #theme-toggle:hover {
+      background: var(--primary-hover);
+    }
+  `;
+  document.head.appendChild(style);
+
+  const theme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'theme-toggle';
+  toggleBtn.innerText = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+  document.body.appendChild(toggleBtn);
+
+  toggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    toggleBtn.innerText = next === 'dark' ? 'Light Mode' : 'Dark Mode';
+  });
+
+  return () => {
+    document.head.removeChild(style);
+    toggleBtn.remove();
+  };
+}, []);
 
   return (
     <>
       <Head>
-        <title>Nevaria - API Documentation</title>
-        <meta name="title" content="Nevaria - REST API Documentation" />
-        <meta name="description" content="Nevaria is a free, simple REST API created by VynnoxRzy for the common good. Feel free to use it, but please avoid DDoS attacks." />
-        <meta name="keywords" content="REST API, VynnoxRzy, Siputzx, Qanypaw, Nawdev, Itzpire API, free API, API documentation, bot wa, free REST API" />
+        <title>NoXXuS - API Documentation</title>
+        <meta name="title" content="NoXXuS - REST API Documentation" />
+        <meta name="description" content="NoXXuS is a free, simple REST API modified and customized by Deff. Feel free to use it, but please avoid DDoS attacks." />
+        <meta name="keywords" content="REST API, Deff, API by Deff, free API, API documentation, bot wa, open API" />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English, Indonesian" />
 
-        <meta property="og:title" content="Nevaria - REST API Documentation" />
-        <meta property="og:description" content="Nevaria is a free, simple REST API created by VynnoxRzy for the common good. Feel free to use it, but please avoid DDoS attacks." />
-        <meta property="og:url" content="https://www.nevariaapi.nevariacloud.my.id" />
+        <meta property="og:title" content="NoXXuS - REST API Documentation" />
+        <meta property="og:description" content="NoXXuS is a free, simple REST API modified and customized by Deff." />
+        <meta property="og:url" content="https://apideffrigans.callmeayinn.my.id" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://files.catbox.moe/pv6uhn.jpg" />
 
-        <meta name="twitter:title" content="Nevaria - REST API Documentation" />
-        <meta name="twitter:description" content="Nevaria is a free, simple REST API created by VynnoxRzy for the common good. Feel free to use it, but please avoid DDoS attacks." />
+        <meta name="twitter:title" content="NoXXuS - REST API Documentation" />
+        <meta name="twitter:description" content="NoXXuS is a free, simple REST API modified and customized by Deff." />
         <meta name="twitter:image" content="https://files.catbox.moe/pv6uhn.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
 
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.png" />
-    
       </Head>
+
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "http://schema.org",
             "@type": "WebSite",
-            "name": "Nevaria",
-            "url": "https://www.nevariaapi.nevariacloud.my.id",
-            "description": "Nevaria is a free, simple REST API created by VynnoxRzy for the common good. Feel free to use it, but please avoid DDoS attacks.",
-            "sameAs": [
-              "https://www.facebook.com/yourprofile",
-              "https://www.twitter.com/yourprofile",
-              "https://www.linkedin.com/in/yourprofile"
-            ]
+            "name": "NoXXuS",
+            "url": "https://apideffrigans.callmeayinn.my.id",
+            "description": "NoXXuS is a free, simple REST API modified and customized by Deff.",
+            "sameAs": []
           })
         }}
       />
@@ -166,6 +204,9 @@ export default function Home() {
           spec={swaggerConfig}
           {...swaggerUIConfig}
         />
+        <footer>
+           © {new Date().getFullYear()} Created by <strong>Deff</strong> — All rights reserved.
+        </footer>
       </main>
     </>
   );
