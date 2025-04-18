@@ -18,89 +18,95 @@ export default function Home() {
   useEffect(() => {
   const style = document.createElement('style');
   style.innerHTML = `
-      body {
-        background-color: #f9fafb;
-        font-family: ${inter.className};
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-      }
+  body {
+    background-color: #f9f9f9 !important;
+    font-family: ${inter.className}, sans-serif;
+    color: #1a1a1a !important;
+  }
 
-      main {
-        animation: fadeIn 1.5s ease-in-out;
-      }
+  .swagger-ui .topbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+  .swagger-ui .info .title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #222 !important;
+    text-transform: uppercase;
+  }
 
-      .swagger-ui {
-        background-color: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        padding: 30px;
-        margin: 30px auto;
-        max-width: 90%;
-        transition: all 0.5s ease;
-      }
+  .swagger-ui .opblock {
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
 
-      .swagger-ui .info .title {
-        font-size: 36px;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 15px;
-        background: linear-gradient(to right, #00b4db, #0083b0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientMove 6s infinite linear;
-        background-size: 200% 200%;
-      }
+  .swagger-ui .opblock-summary {
+    background: #ffffff !important;
+    color: #333 !important;
+    cursor: pointer;
+  }
 
-      @keyframes gradientMove {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
+  .swagger-ui .opblock .opblock-section-header {
+    background: #fafafa;
+    font-weight: 500;
+  }
 
-      .swagger-ui .opblock {
-        border-radius: 10px;
-        margin-bottom: 20px;
-        transition: transform 0.3s ease;
-      }
+  .swagger-ui .btn {
+    border-radius: 6px !important;
+    background-color: #0057d9 !important;
+    color: #fff !important;
+    border: none !important;
+  }
 
-      .swagger-ui .opblock:hover {
-        transform: scale(1.01);
-        border-color: #a0aec0;
-      }
+  .swagger-ui .btn:hover {
+    background-color: #0041a8 !important;
+  }
 
-      .swagger-ui .opblock-summary-method {
-        border-radius: 6px;
-        padding: 6px 10px;
-        font-weight: bold;
-      }
+  .swagger-ui input,
+  .swagger-ui textarea,
+  .swagger-ui select {
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    padding: 8px !important;
+    background-color: #fff !important;
+  }
 
-      .swagger-ui .model-box, .swagger-ui .parameters-col_description {
-        font-size: 14px;
-        color: #444;
-      }
+  .swagger-ui .model-title {
+    font-weight: 600;
+    color: #444 !important;
+  }
 
-      footer {
-        background-color: #edf2f7;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        color: #4a5568;
-        margin-top: 40px;
-        border-top: 1px solid #e2e8f0;
-      }
-    `;
+  .swagger-ui .response-col_status {
+    font-weight: bold;
+    color: #2a7c2a !important;
+  }
+
+  footer {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+  }
+
+  /* ANIMASI OPEN API */
+  .swagger-ui .opblock .opblock-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .swagger-ui .opblock.is-open .opblock-body {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in-out;
+  }
+`;
   document.head.appendChild(style);
 
   const theme = localStorage.getItem('theme') || 'light';
